@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="indexPageDef"
+                Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="IndexController" id="IndexControllerIterator"/>
+    <accessorIterator MasterBinding="IndexControllerIterator" Binds="entries" RangeSize="25"
+                      DataControl="IndexController" BeanClass="demo.adfhtml.view.IndexEntry" id="entriesIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="entriesIterator" id="entries">
+      <nodeDefinition DefName="demo.adfhtml.view.IndexEntry" Name="entries0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="description"/>
+          <Item Value="image"/>
+          <Item Value="navigation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

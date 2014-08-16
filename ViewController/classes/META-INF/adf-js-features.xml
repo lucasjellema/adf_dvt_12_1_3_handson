@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<features xmlns="http://xmlns.oracle.com/adf/faces/feature">  
+  <feature>
+    <feature-name>LearningDiagramLayouts</feature-name>
+    <feature-class>js/layouts/learningDiagram.js</feature-class>
+  </feature>
+</features>

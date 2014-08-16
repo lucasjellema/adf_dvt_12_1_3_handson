@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="index">
+    <page>/index.jsf</page>
+  </view>
+  <view id="Gauges">
+    <page>/Gauges.jsf</page>
+  </view>
+  <view id="MatchCenter">
+    <page>/MatchCenter.jspx</page>
+  </view>
+  <view id="StadiumsOnCustomThematicMap">
+    <page>/StadiumsOnCustomThematicMap.jsf</page>
+  </view>
+  <view id="SimpleAnimation">
+    <page>/SimpleAnimation.jsf</page>
+  </view>
+  <view id="RunningGoalStatisticsAnimation">
+    <page>/RunningGoalStatisticsAnimation.jsf</page>
+  </view>
+  <view id="RunningGoalsStatistics">
+    <page>/RunningGoalsStatistics.jsf</page>
+  </view>
+  <view id="Rating">
+    <page>/Rating.jsf</page>
+  </view>
+  <view id="DiagramTutorialStep6">
+    <page>/DiagramTutorialStep6.jsf</page>
+  </view>
+  <view id="MatchesPlayedListAnimation">
+    <page>/MatchesPlayedListAnimation.jsf</page>
+  </view>
+  <view id="DiagramStep3">
+    <page>/DiagramStep3.jsf</page>
+  </view>
+  <view id="RunningCustomMap">
+    <page>/RunningCustomMap.jsf</page>
+  </view>
+  <control-flow-rule id="__6">
+    <from-activity-id>index</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>gauges</from-outcome>
+      <to-activity-id>Gauges</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>tagcloud</from-outcome>
+      <to-activity-id>MatchCenter</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>customBaseMap</from-outcome>
+      <to-activity-id>StadiumsOnCustomThematicMap</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>simpleAnimation</from-outcome>
+      <to-activity-id>SimpleAnimation</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>clientSideChartAnimated</from-outcome>
+      <to-activity-id>RunningGoalStatisticsAnimation</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__12">
+      <from-outcome>clientSideChart</from-outcome>
+      <to-activity-id>RunningGoalsStatistics</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>rating</from-outcome>
+      <to-activity-id>Rating</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__14">
+      <from-outcome>diagram6</from-outcome>
+      <to-activity-id>DiagramTutorialStep6</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__15">
+      <from-outcome>gaugesAnimated</from-outcome>
+      <to-activity-id>MatchesPlayedListAnimation</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__16">
+      <from-outcome>diagramTutorial</from-outcome>
+      <to-activity-id>DiagramStep3</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__17">
+      <from-outcome>runningCustomBaseMap</from-outcome>
+      <to-activity-id>RunningCustomMap</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__1">
+    <managed-bean-name>animationControllerBean</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.AnimationControllerBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>matchAnimationControllerBean</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.AnimationControllerBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2c">
+    <managed-bean-name>mymatchAnimationControllerBean</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.AnimationControllerBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="__3x">
+    <managed-bean-name>matchController</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.MatchController</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    <managed-property id="__5">
+      <property-name>pollController</property-name>
+      <property-class>demo.adfhtml.view.AnimationControllerBean</property-class>
+      <value>#{viewScope.matchAnimationControllerBean}</value>
+    </managed-property>
+    <managed-property id="_65">
+      <property-name>iteratorToRefresh</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>TotalMatchPlayCountUntilDateView1Iterator</value>
+    </managed-property>
+  </managed-bean>
+  
+  <managed-bean id="__3b">
+    <managed-bean-name>matchControllerLineChart</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.MatchController</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    <managed-property id="__5b">
+      <property-name>pollController</property-name>
+      <property-class>demo.adfhtml.view.AnimationControllerBean</property-class>
+      <value>#{viewScope.matchAnimationControllerBean}</value>
+    </managed-property>
+    <managed-property id="_65b">
+      <property-name>iteratorToRefresh</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>RunningStatsView1Iterator</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="_3cb">
+    <managed-bean-name>matchControllerMapChart</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.MatchController</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    <managed-property id="__5cb">
+      <property-name>pollController</property-name>
+      <property-class>demo.adfhtml.view.AnimationControllerBean</property-class>
+      <value>#{viewScope.matchAnimationControllerBean}</value>
+    </managed-property>
+    <managed-property id="_65cb">
+      <property-name>iteratorToRefresh</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>RunningMatchPerStadiumCountView1Iterator</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean id="__3">
+    <managed-bean-name>diagramModel</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.diagram.DiagramDataModel</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>tutorialBikeSample</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.vieworacle.adfdemo.view.feature.rich.diagram.tutorial.TutorialBikeSample</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name>indexController</managed-bean-name>
+    <managed-bean-class>demo.adfhtml.view.IndexController</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

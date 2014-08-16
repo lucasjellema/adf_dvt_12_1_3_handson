@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="StadiumsOnCustomThematicMap.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:panelHeader text="Custom Base Map - showing the locations of the match venues - size of marker indicates number of matches"  id="ph121" />
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="60%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+
+                        
+                        <dvt:thematicMap id="tm1b" basemap="stadiums" source="/maps/worldcup_maps.xml" summary="Custom Base Map showing the Stadium for the World Cup Football 2014 tournament" >
+                            <dvt:areaLayer layer="stadiums1" id="ala1">
+                                <dvt:pointDataLayer id="pdl1a" selectionMode="single"
+                                                    value="#{bindings.MatchCountPerStadiumView1.collectionModel}"
+                                                    var="row" animationOnDataChange="alphaFade" varStatus="rowStatus">
+                                    <dvt:pointLocation id="pla1" pointName="#{row.City}" type="pointName">
+                                        <dvt:marker id="ma1" shape="circle" opacity="1" gradientEffect="none"
+                                                    fillColor="#2121ff" scaleX="#{row.MatchCount.value}" scaleY="#{row.MatchCount.value}" shortDesc=" #{row.MatchCount}"/>
+                                    </dvt:pointLocation>
+                                </dvt:pointDataLayer>
+                            </dvt:areaLayer>
+                        </dvt:thematicMap>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

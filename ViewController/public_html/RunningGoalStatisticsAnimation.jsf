@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="SimpleAnimation.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:panelHeader id="ph1" text="The average number of goals scored at the World Cup Football 2014 - until the running date#{viewScope.matchControllerLineChart.someValue}"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="10%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:poll id="p1" interval="#{viewScope.matchAnimationControllerBean.interval}" immediate="true"
+                                 pollListener="#{viewScope.matchAnimationControllerBean.pollHandler}"
+                                 binding="#{viewScope.matchAnimationControllerBean.pollerBinding}"/>
+                        <af:button text=">" id="b1" shortDesc="Run/Play"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.play}"/>
+                        <af:button text="||" id="b2" shortDesc="Pause/Resume"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.pause}"/>
+                        <af:button text="&lt;" id="b3" shortDesc="Reverse"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.reverse}"/>
+                        <af:button text=">>" id="b4" shortDesc="Faster"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.faster}"/>
+                        <af:button text="&lt;&lt;" id="b5" shortDesc="Slower"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.slower}"/>
+                        <af:button text="---->" id="b6" shortDesc="Increase step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.increaseStep}"/>
+                        <af:button text="->" id="b7" shortDesc="Decrease step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.decreaseStep}"/>
+                        <af:inputNumberSlider label="Set step size" id="ins1"
+                                              maximum="#{viewScope.matchAnimationControllerBean.maxIncrement}"
+                                              minorIncrement="1" majorIncrement="10"
+                                              minimum="#{viewScope.matchAnimationControllerBean.minIncrement}"
+                                              value="#{viewScope.matchAnimationControllerBean.increment}" autoSubmit="true"
+                                              visible="false"
+                                              partialTriggers="b7 b6"/>
+                       
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="60%" id="gr4">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc21">
+                        <af:outputText value="#{viewScope.matchControllerLineChart.currentDate}" id="of1"
+                                       inlineStyle="font-size:xx-large;" partialTriggers="p1">
+                            <af:convertDateTime type="date" dateStyle="medium"/>
+                        </af:outputText>
+                        <dvt:lineChart id="lineChart1" var="row" value="#{bindings.RunningStatsView1.collectionModel}">
+                            <dvt:chartLegend id="cl1"/>
+                            <f:facet name="dataStamp">
+                                <af:group id="g1">
+                                    <dvt:chartDataItem id="di1" value="#{row.TotalAvg}" group="#{row.MatchDate}"
+                                                       series="Overall average #goals per match"/>
+                                    <dvt:chartDataItem id="di2" value="#{row.ShortAvg}" group="#{row.MatchDate}"
+                                                       series="Running average #goals per match"/>
+                                </af:group>
+                            </f:facet>
+                        </dvt:lineChart>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:matchAnimationControllerBean-->
+</f:view>

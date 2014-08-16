@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="index.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+   <!--                     
+                        <af:listView value="#{bindings.entries.collectionModel}" var="item"
+                                     emptyText="#{bindings.entries.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                     fetchSize="#{bindings.entries.rangeSize}" id="lv1">
+                            <af:listItem id="li1">
+                                <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" id="s1"/>
+                                    </f:facet>
+                                    <af:outputFormatted value="#{item.bindings.name.inputValue}" id="of1"/>
+                                    <af:outputFormatted value="#{item.bindings.description.inputValue}" id="of2"/>
+                                </af:panelGroupLayout>
+                            </af:listItem>
+                        </af:listView>
+-->
+                        <dvt:thematicMap id="tm1b" basemap="flowers" source="/maps/index_maps.xml" summary="Index using Custom Base Map feature" >
+                            <dvt:areaLayer layer="flowers1" id="ala1">
+                                <dvt:pointDataLayer id="pdl1a" selectionMode="single"
+                                                    value="#{bindings.entries.collectionModel}"
+                                                    var="row" animationOnDataChange="alphaFade" varStatus="rowStatus">
+                                    <dvt:pointLocation id="pla1" pointName="#{row.name}" type="pointName" >
+                                        <dvt:marker id="ma1" shape="circle" opacity="1" gradientEffect="none"
+                                                    fillColor="#2121ff" scaleX="3" scaleY="3" shortDesc=" #{row.description}"
+                                                    action="#{indexController.doAction}"
+                                                    actionListener="#{indexController.handleMarkerClick}"
+
+                                                    >
+                                                 <af:setActionListener   from="#{row.name}" to="#{indexController.newCurrentEntryName}" />
+                                                 <af:showPopupBehavior popupId="::::indexEntryDetails"
+                                                                  triggerType="click"/>
+                                     
+                                        </dvt:marker>
+                                    </dvt:pointLocation>
+                                </dvt:pointDataLayer>
+                            </dvt:areaLayer>
+                        </dvt:thematicMap>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+<af:popup id="indexEntryDetails" animate="true" contentDelivery="lazyUncached">
+<af:panelWindow id="pw" title="Details for #{indexController.currentEntry.name}" >
+                    <af:image source="#{indexController.currentEntry.image}" id="i1"
+                    inlineStyle="height:150.0px;"/>
+                    <af:outputText id="ds" value="#{indexController.currentEntry.description}" />
+                    <af:button id="but" textAndAccessKey="Go to demo " action="#{indexController.doRealAction}" />
+                    
+                    
+                </af:panelWindow>
+</af:popup>
+        </af:form>
+    </af:document>
+</f:view>

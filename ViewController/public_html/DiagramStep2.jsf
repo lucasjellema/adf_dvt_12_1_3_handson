@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="DiagramStep1.jsf" id="d12">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Header -->
+                        <af:link id="dmlink"
+                                 destination="https://blogs.oracle.com/data-visualizations/entry/a_guide_to_diagram_part2"
+                                 text="Duncan Mill's A Guide to Diagram – Part 2 – Content for Nodes  "
+                                 useWindow="true" targetFrame="_blank"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <dvt:diagram id="d1" summary="Example Diagram" layout="circleLayout">
+                            <dvt:clientLayout name="circleLayout" method="DemoCircleLayout.circleLayout"
+                                              featureName="DemoCircleLayout"/>
+                            <dvt:diagramNodes id="dns1" value="#{ diagramModel.nodes}" var="node">
+                                <dvt:diagramNode id="dn1" nodeId="#{node.uniqueNodeId}" label="#{node.nodeLabel}">
+                                    <f:facet name="zoom100">
+                                        <dvt:marker shape="circle" height="20" width="20" fillColor="#ff0000"
+                                                    borderColor="#000000" borderStyle="solid" borderWidth="1.0"/>
+                                    </f:facet>
+                                </dvt:diagramNode>
+                            </dvt:diagramNodes>
+                            <dvt:diagramLinks id="dls1" value="#{diagramModel.links}" var="link">
+                                <dvt:diagramLink id="dl1" startNode="#{link.sourceNodeId}"
+                                                 endNode="#{link.destinationNodeId}"/>
+                            </dvt:diagramLinks>
+                        </dvt:diagram>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

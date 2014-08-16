@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="demo.adfhtml.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/matchTable.jsff"
+          usageId="demo_adfhtml_view_matchTablePageDef"/>
+    <page path="/MatchCenter.jspx"
+          usageId="demo_adfhtml_view_MatchCenterPageDef"/>
+    <page path="/matchDetails.jsff"
+          usageId="demo_adfhtml_view_matchDetailsPageDef"/>
+    <page path="/WEB-INF/match-details-task-flow-definition.xml#match-details-task-flow-definition@SetCurrentRowWithKeyValue"
+          usageId="demo_adfhtml_view_match_details_task_flow_definition_match_details_task_flow_definition_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/tagcloud.jsff" usageId="demo_adfhtml_view_tagcloudPageDef"/>
+    <page path="/Rating.jsf" usageId="demo_adfhtml_view_RatingPageDef"/>
+    <page path="/RunningGoalsStatistics.jsf" usageId="demo_adfhtml_view_RunningGoalsStatisticsPageDef"/>
+    <page path="/StadiumsOnCustomThematicMap.jsf" usageId="demo_adfhtml_view_StadiumsOnCustomThematicMapPageDef"/>
+    <page path="/Gauges.jsf" usageId="demo_adfhtml_view_GaugesPageDef"/>
+    <page path="/SomeAnimations.jsf" usageId="demo_adfhtml_view_SomeAnimationsPageDef"/>
+    <page path="/MatchesPlayedListAnimation.jsf" usageId="demo_adfhtml_view_MatchesPlayedListAnimationPageDef"/>
+    <page path="/RunningGoalStatisticsAnimation.jsf" usageId="demo_adfhtml_view_RunningGoalStatisticsAnimationPageDef"/>
+    <page path="/index.jsf" usageId="demo_adfhtml_view_indexPageDef"/>
+    <page path="/CustomMapWithAnimation.jsf" usageId="demo_adfhtml_view_CustomMapWithAnimationPageDef"/>
+    <page path="/RunningCustomMap.jsf" usageId="demo_adfhtml_view_RunningCustomMapPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="demo_adfhtml_view_matchTablePageDef"
+          path="demo.adfhtml.view.pageDefs.matchTablePageDef"/>
+    <page id="demo_adfhtml_view_MatchCenterPageDef"
+          path="demo.adfhtml.view.pageDefs.MatchCenterPageDef"/>
+    <page id="demo_adfhtml_view_matchDetailsPageDef"
+          path="demo.adfhtml.view.pageDefs.matchDetailsPageDef"/>
+    <page id="demo_adfhtml_view_match_details_task_flow_definition_match_details_task_flow_definition_SetCurrentRowWithKeyValuePageDef"
+          path="demo.adfhtml.view.pageDefs.match_details_task_flow_definition_match_details_task_flow_definition_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="demo_adfhtml_view_tagcloudPageDef"
+          path="demo.adfhtml.view.pageDefs.tagcloudPageDef"/>
+    <page id="demo_adfhtml_view_RatingPageDef" path="demo.adfhtml.view.pageDefs.RatingPageDef"/>
+    <page id="demo_adfhtml_view_RunningGoalsStatisticsPageDef"
+          path="demo.adfhtml.view.pageDefs.RunningGoalsStatisticsPageDef"/>
+    <page id="demo_adfhtml_view_StadiumsOnCustomThematicMapPageDef"
+          path="demo.adfhtml.view.pageDefs.StadiumsOnCustomThematicMapPageDef"/>
+    <page id="demo_adfhtml_view_GaugesPageDef" path="demo.adfhtml.view.pageDefs.GaugesPageDef"/>
+    <page id="demo_adfhtml_view_SomeAnimationsPageDef" path="demo.adfhtml.view.pageDefs.SomeAnimationsPageDef"/>
+    <page id="demo_adfhtml_view_MatchesPlayedListAnimationPageDef"
+          path="demo.adfhtml.view.pageDefs.MatchesPlayedListAnimationPageDef"/>
+    <page id="demo_adfhtml_view_RunningGoalStatisticsAnimationPageDef"
+          path="demo.adfhtml.view.pageDefs.RunningGoalStatisticsAnimationPageDef"/>
+    <page id="demo_adfhtml_view_indexPageDef" path="demo.adfhtml.view.pageDefs.indexPageDef"/>
+    <page id="demo_adfhtml_view_CustomMapWithAnimationPageDef"
+          path="demo.adfhtml.view.pageDefs.CustomMapWithAnimationPageDef"/>
+    <page id="demo_adfhtml_view_RunningCustomMapPageDef" path="demo.adfhtml.view.pageDefs.RunningCustomMapPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="IndexController" path="demo.adfhtml.view.IndexController"/>
+    <dc id="TagRemovedEventConsumer"
+        path="demo.adfhtml.view.TagRemovedEventConsumer"/>
+    <dc id="TagAddedEventConsumer"
+        path="demo.adfhtml.view.TagAddedEventConsumer"/>
+    <dc id="AvailableTagsCollectionChangedEventConsumer"
+        path="demo.adfhtml.view.AvailableTagsCollectionChangedEventConsumer"/>
+    <dc id="EventConsumer" path="demo.adfhtml.view.EventConsumer"/>
+    <dc id="EventPublisher" path="demo.adfhtml.view.EventPublisher"/>
+    <BC4JDataControl id="WorldCupServiceDataControl"
+                     Package="demo.adfhtml.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="WorldCupServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+
+<af:panelBox id="pb1"  text="Animation Controls" >
+                          <af:poll id="p1" interval="#{pageFlowScope.animationControllerBean.interval}" immediate="true"
+                                 pollListener="#{pageFlowScope.animationControllerBean.pollHandler}"
+                                 binding="#{pageFlowScope.animationControllerBean.pollerBinding}"/>
+                        <af:button text=">" id="b1" shortDesc="Run/Play"
+                                   actionListener="#{pageFlowScope.animationControllerBean.play}"/>
+                        <af:button text="||" id="b2" shortDesc="Pause/Resume"
+                                   actionListener="#{pageFlowScope.animationControllerBean.pause}"/>
+                        <af:button text="&lt;" id="b3" shortDesc="Reverse"
+                                   actionListener="#{pageFlowScope.animationControllerBean.reverse}"/>
+                        <af:button text=">>" id="b4" shortDesc="Faster"
+                                   actionListener="#{pageFlowScope.animationControllerBean.faster}"/>
+                        <af:button text="&lt;&lt;" id="b5" shortDesc="Slower"
+                                   actionListener="#{pageFlowScope.animationControllerBean.slower}"/>
+                        <af:button text="---->" id="b6" shortDesc="Increase step"
+                                   actionListener="#{pageFlowScope.animationControllerBean.increaseStep}"/>
+                        <af:button text="->" id="b7" shortDesc="Decrease step"
+                                   actionListener="#{pageFlowScope.animationControllerBean.decreaseStep}"/>
+                        <af:inputNumberSlider label="Set step size" id="ins1"
+                                              maximum="#{pageFlowScope.animationControllerBean.maxIncrement}"
+                                              minorIncrement="1" majorIncrement="10"
+                                              minimum="#{pageFlowScope.animationControllerBean.minIncrement}"
+                                              value="#{pageFlowScope.animationControllerBean.increment}" autoSubmit="true"
+                                              partialTriggers="b7 b6"/>
+                        <af:outputText value="#{pageFlowScope.animationControllerBean.value}" id="of1"
+                                       inlineStyle="font-size:xx-large;" partialTriggers="p1"/>
+
+</af:panelBox>
+</ui:composition>

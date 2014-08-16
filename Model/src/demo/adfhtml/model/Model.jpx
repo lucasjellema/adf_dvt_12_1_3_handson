@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.1.3.10.8"
+  SeparateXMLFiles="true"
+  PackageName="demo.adfhtml.model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../../Model.jpr"/>
+    <Attr Name="_NamedConnection" Value="WorldCup2014"/>
+    <Attr Name="_appModuleNames0" Value="demo.adfhtml.model.WorldCupService"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+  </DesignTime>
+  <Containee
+    Name="model"
+    PackageName="demo.adfhtml.model"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+      <Attr Name="_VO" Value="true"/>
+      <Attr Name="_AM" Value="true"/>
+      <Attr Name="_AS" Value="true"/>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

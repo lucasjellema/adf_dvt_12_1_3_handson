@@ -1,0 +1,22 @@
+<basemap id='flowers'>
+    <layer id='flowers1'>
+        <image height='834' width='1109' source='/images/flowery_index.png'/>
+    </layer>
+    <points>
+        <point x='219' y='260' name='demoRating' longLabel='Rating'/>
+        <point x='73' y='388' name='demoTagCloud' longLabel='Tag Cloud (non DVT)'/>
+        <point x='318' y='401' name='demoSimpleAnimation' longLabel='Simple Animation (non DVT)'/>
+        <point x='430' y='304' name='demoCustomBaseMap' longLabel='Custom Base Map'/>
+        <point x='568' y='228' name='demoGauges' longLabel='Gauges'/>
+        <point x='863' y='172' name='demoDiagram' longLabel='Diagram'/>
+        <point x='983' y='315' name='demoAnimatedClientChart' longLabel='Animated Client Chart'/>
+        <point x='529' y='485' name='demoClientChart' longLabel='Client Chart'/>
+        -       <point x='669' y='310'  name='demoAnimatedCustomMap' longLabel='Animated Custom Map'/>
+        <point x='798' y='460' name='demoAnimatedGauges' longLabel='Animated Gauges'/>
+        <point x='1056' y='416' name='demoDiagram4' longLabel='Demo/Tutorial of Diagram'/>
+-       <point x='669' y='310' name='Cuiaba' longLabel='Cuiaba'/>
+       <!--  <point x='455' y='422' name='Cuiaba' longLabel='Cuiaba'/>
+        
+        -->
+    </points>
+</basemap>

@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="Rating Gauge" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Content -->
+                        <af:panelGroupLayout layout="vertical" id="pgl2">
+                            <af:panelHeader text="Demonstration of the new 12.1.3 Rating Gauge" id="ph1">
+                                <af:panelFormLayout id="pfl1">
+                                    <af:panelLabelAndMessage label="#{bindings.GroupDesignation.hints.label}"
+                                                             id="plam1">
+                                        <af:outputText value="#{bindings.GroupDesignation.inputValue}"
+                                                       shortDesc="#{bindings.GroupDesignation.hints.tooltip}" id="ot1"/>
+                                    </af:panelLabelAndMessage>
+                                    <af:panelLabelAndMessage label="#{bindings.GroupRating.hints.label}" id="plam2">
+                                        <dvt:ratingGauge id="ratingGauge1" minimum="0" maximum="5"
+                                                         value="#{bindings.GroupRating12.inputValue}" shape="star"/>
+                                    </af:panelLabelAndMessage>
+                                    <f:facet name="footer">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                            <f:facet name="separator">
+                                                <af:spacer width="10" height="1" id="s1"/>
+                                            </f:facet>
+                                            <af:button actionListener="#{bindings.First.execute}" text="First"
+                                                       disabled="#{!bindings.First.enabled}" partialSubmit="true"
+                                                       id="b1"/>
+                                            <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true"
+                                                       id="b2"/>
+                                            <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                                       disabled="#{!bindings.Next.enabled}" partialSubmit="true"
+                                                       id="b3"/>
+                                            <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                                       disabled="#{!bindings.Last.enabled}" partialSubmit="true"
+                                                       id="b4"/>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                </af:panelFormLayout>
+                            </af:panelHeader>
+                            <af:panelHeader text="Matches in the selected group" id="ph2">
+                                <af:panelCollection id="pc1">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="statusbar"/>
+                                    <af:table rows="#{bindings.RemainingMatches2.rangeSize}"
+                                              fetchSize="#{bindings.RemainingMatches2.rangeSize}"
+                                              emptyText="#{bindings.RemainingMatches2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              var="row" value="#{bindings.RemainingMatches2.collectionModel}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.RemainingMatches2.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.RemainingMatches2.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t1">
+                                        <af:column headerText="#{bindings.RemainingMatches2.hints.HomeCountry.label}"
+                                                   sortProperty="#{bindings.RemainingMatches2.hints.HomeCountry.name}"
+                                                   sortable="true" id="c1">
+                                            <af:outputText value="#{row.HomeCountry}"
+                                                           shortDesc="#{bindings.RemainingMatches2.hints.HomeCountry.tooltip}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.RemainingMatches2.hints.AwayCountry.label}"
+                                                   sortProperty="#{bindings.RemainingMatches2.hints.AwayCountry.name}"
+                                                   sortable="true" id="c2">
+                                            <af:outputText value="#{row.AwayCountry}"
+                                                           shortDesc="#{bindings.RemainingMatches2.hints.AwayCountry.tooltip}"
+                                                           id="ot4"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.RemainingMatches2.hints.Score.label}"
+                                                   sortProperty="#{bindings.RemainingMatches2.hints.Score.name}"
+                                                   sortable="true" id="c5">
+                                            <af:outputText value="#{row.Score}"
+                                                           shortDesc="#{bindings.RemainingMatches2.hints.Score.tooltip}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.RemainingMatches2.hints.MatchRating.label}"
+                                                   sortProperty="#{bindings.RemainingMatches2.hints.MatchRating.name}"
+                                                   sortable="true" id="c9">
+                                            <dvt:ratingGauge id="rg1" value="#{row.MatchRating}" minimum="0" maximum="5"
+                                                             shape="star"/>
+                                            <af:outputText value="#{row.MatchRating}"
+                                                           shortDesc="#{bindings.RemainingMatches2.hints.MatchRating.tooltip}"
+                                                           id="ot11">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.RemainingMatches2.hints.MatchRating.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelHeader>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

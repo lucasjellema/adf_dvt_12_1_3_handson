@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="GaugesPageDef"
+                Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="MatchesPlayedCounterView1" RangeSize="1" DataControl="WorldCupServiceDataControl"
+              id="MatchesPlayedCounterView1Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MatchesPlayedCounterView1Iterator" id="MatchDate">
+      <AttrNames>
+        <Item Value="MatchDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MatchesPlayedCounterView1Iterator" id="MatchesPlayedUpUntil" ChangeEventPolicy="ppr">
+      <AttrNames>
+        <Item Value="MatchesPlayedUpUntil"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MatchesPlayedCounterView1Iterator" id="PercentageMatchesPlayed">
+      <AttrNames>
+        <Item Value="PercentageMatchesPlayed"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="MatchesPlayedCounterView1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="MatchesPlayedCounterView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="MatchesPlayedCounterView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="MatchesPlayedCounterView1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="MatchesPlayedCounterView1Iterator" id="MatchesPlayedUpUntil12"
+                     ChangeEventPolicy="ppr">
+      <AttrNames>
+        <Item Value="MatchesPlayedUpUntil"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MatchesPlayedCounterView1Iterator" id="MatchesPlayedUpUntil123">
+      <AttrNames>
+        <Item Value="MatchesPlayedUpUntil"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

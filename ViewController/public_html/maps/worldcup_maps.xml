@@ -1,0 +1,19 @@
+<basemap id='stadiums'>
+    <layer id='stadiums1'>
+        <image height='764' width='796' source='/images/brazil2014_map2.png'/>
+    </layer>
+    <points>
+        <point x='387' y='244' name='Manaus' longLabel='Manaus'/>
+        <point x='635' y='565' name='Rio de Janeiro' longLabel='Rio de Janeiro'/>
+        <point x='560' y='430' name='Brasilia' longLabel='Brasilia'/>
+        <point x='551' y='581' name='Sao Paulo' longLabel='Sao Paulo'/>
+        <point x='752' y='335' name='Recife' longLabel='Recife'/>
+        <point x='515' y='685' name='Porto Alegre' longLabel='Porto Alege'/>
+        <point x='667' y='248' name='Fortaleza' longLabel='Fortaleza'/>
+        <point x='625' y='495' name='Belo Horizonte' longLabel='Belo Horizonte'/>
+        <point x='708' y='398' name='Salvador' longLabel='Salvador'/>
+        <point x='750' y='288' name='Natal' longLabel='Natal'/>
+        <point x='537' y='616' name='Curitiba' longLabel='Curitiba'/>
+        <point x='455' y='422' name='Cuiaba' longLabel='Cuiaba'/>
+    </points>
+</basemap>

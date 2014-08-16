@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="Animated Custom Map" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:panelHeader id="ph1" text="The average number of goals scored at the World Cup Football 2014 - until the running date#{viewScope.matchControllerMapChart.someValue}"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="10%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:poll id="p1" interval="#{viewScope.matchAnimationControllerBean.interval}" immediate="true"
+                                 pollListener="#{viewScope.matchAnimationControllerBean.pollHandler}"
+                                 binding="#{viewScope.matchAnimationControllerBean.pollerBinding}"/>
+                        <af:button text=">" id="b1" shortDesc="Run/Play"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.play}"/>
+                        <af:button text="||" id="b2" shortDesc="Pause/Resume"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.pause}"/>
+                        <af:button text="&lt;" id="b3" shortDesc="Reverse"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.reverse}"/>
+                        <af:button text=">>" id="b4" shortDesc="Faster"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.faster}"/>
+                        <af:button text="&lt;&lt;" id="b5" shortDesc="Slower"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.slower}"/>
+                        <af:button text="---->" id="b6" shortDesc="Increase step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.increaseStep}"/>
+                        <af:button text="->" id="b7" shortDesc="Decrease step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.decreaseStep}"/>
+                        <af:inputNumberSlider label="Set step size" id="ins1"
+                                              maximum="#{viewScope.matchAnimationControllerBean.maxIncrement}"
+                                              minorIncrement="1" majorIncrement="10"
+                                              minimum="#{viewScope.matchAnimationControllerBean.minIncrement}"
+                                              value="#{viewScope.matchAnimationControllerBean.increment}" autoSubmit="true"
+                                              visible="false"
+                                              partialTriggers="b7 b6"/>
+                       
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="60%" id="gr4">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc21">
+                        <af:outputText value="#{viewScope.matchControllerMapChart.currentDate}" id="of1"
+                                       inlineStyle="font-size:xx-large;" partialTriggers="p1">
+                            <af:convertDateTime type="date" dateStyle="medium"/>
+                        </af:outputText>
+ 
+                        
+                                                <dvt:thematicMap id="tm1b" basemap="stadiums" source="/maps/worldcup_maps.xml" summary="Custom Base Map showing the Stadium for the World Cup Football 2014 tournament" >
+                            <dvt:areaLayer layer="stadiums1" id="ala1">
+                                <dvt:pointDataLayer id="pdl1a" selectionMode="single"
+                                                    value="#{bindings.RunningMatchPerStadiumCountView12.collectionModel}"
+                                                    var="row" animationOnDataChange="alphaFade" varStatus="rowStatus">
+                                    <dvt:pointLocation id="pla1" pointName="#{row.City}" type="pointName">
+                                        <dvt:marker id="ma1" shape="circle" opacity="1" gradientEffect="none"
+                                                    fillColor="#2121ff" scaleX="#{row.MatchCount.value}" scaleY="#{row.MatchCount.value}" shortDesc=" #{row.MatchCount}"/>
+                                    </dvt:pointLocation>
+                                </dvt:pointDataLayer>
+                            </dvt:areaLayer>
+                        </dvt:thematicMap>
+
+                        
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:matchAnimationControllerBean-->
+</f:view>

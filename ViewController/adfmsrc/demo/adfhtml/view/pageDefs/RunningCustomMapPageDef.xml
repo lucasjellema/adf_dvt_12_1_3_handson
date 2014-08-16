@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="RunningCustomMapPageDef"
+                Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RunningMatchPerStadiumCountView1" RangeSize="-1" DataControl="WorldCupServiceDataControl"
+              id="RunningMatchPerStadiumCountView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RunningMatchPerStadiumCountView1Iterator" id="RunningMatchPerStadiumCountView1">
+      <nodeDefinition DefName="demo.adfhtml.model.RunningMatchPerStadiumCountView"
+                      Name="RunningMatchPerStadiumCountView10">
+        <AttrNames>
+          <Item Value="MatchCount"/>
+          <Item Value="City"/>
+          <Item Value="StadiumId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RunningMatchPerStadiumCountView1Iterator" id="RunningMatchPerStadiumCountView11">
+      <nodeDefinition DefName="demo.adfhtml.model.RunningMatchPerStadiumCountView"
+                      Name="RunningMatchPerStadiumCountView110">
+        <AttrNames>
+          <Item Value="MatchCount"/>
+          <Item Value="City"/>
+          <Item Value="StadiumId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RunningMatchPerStadiumCountView1Iterator" id="RunningMatchPerStadiumCountView12"
+          ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="demo.adfhtml.model.RunningMatchPerStadiumCountView"
+                      Name="RunningMatchPerStadiumCountView120">
+        <AttrNames>
+          <Item Value="City"/>
+          <Item Value="MatchCount"/>
+          <Item Value="StadiumId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

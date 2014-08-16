@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="Running Match Count (animated)" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:panelHeader id="ph1" text="The number of matches played at the World Cup Football 2014 - until the running date#{viewScope.matchController.someValue}"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="10%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                     <af:poll id="p1" interval="#{viewScope.matchAnimationControllerBean.interval}" immediate="true"
+                                 pollListener="#{viewScope.matchAnimationControllerBean.pollHandler}"
+                                 binding="#{viewScope.matchAnimationControllerBean.pollerBinding}"/>
+                        <af:button text=">" id="b1" shortDesc="Run/Play"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.play}"/>
+                        <af:button text="||" id="b2" shortDesc="Pause/Resume"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.pause}"/>
+                        <af:button text="&lt;" id="b3" shortDesc="Reverse"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.reverse}"/>
+                        <af:button text=">>" id="b4" shortDesc="Faster"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.faster}"/>
+                        <af:button text="&lt;&lt;" id="b5" shortDesc="Slower"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.slower}"/>
+                        <af:button text="---->" id="b6" shortDesc="Increase step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.increaseStep}"/>
+                        <af:button text="->" id="b7" shortDesc="Decrease step"
+                                   actionListener="#{viewScope.matchAnimationControllerBean.decreaseStep}"/>
+                        <af:inputNumberSlider label="Set step size" id="ins1"
+                                              maximum="#{viewScope.matchAnimationControllerBean.maxIncrement}"
+                                              minorIncrement="1" majorIncrement="10"
+                                              minimum="#{viewScope.matchAnimationControllerBean.minIncrement}"
+                                              value="#{viewScope.matchAnimationControllerBean.increment}" autoSubmit="true"
+                                              visible="false"
+                                              partialTriggers="b7 b6"/>
+                       
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="60%" id="gr4">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc21">
+                        <af:outputText value="#{viewScope.matchController.currentDate}" id="of1"
+                                       inlineStyle="font-size:xx-large;" partialTriggers="p1">
+                            <af:convertDateTime type="date" dateStyle="medium"/>
+                        </af:outputText>
+   
+                        <dvt:dialGauge id="dialGauge2" indicator="needleAntique" minimum="0" maximum="64"
+                                       background="circleAntique" value="#{bindings.MatchCount.inputValue}">
+                            <dvt:gaugeMetricLabel rendered="true" id="gml3"/>
+                        </dvt:dialGauge>
+                        <dvt:statusMeterGauge orientation="circular" inlineStyle="width:50px;height:50px"
+                                              id="statusMeterGauge1" minimum="0" maximum="64"
+                                              value="#{bindings.MatchCount.inputValue}">
+                            <dvt:gaugeMetricLabel rendered="true" id="gml2"/>
+                            <dvt:gaugeThreshold id="thr1" color="#00ff00" maximum="48"/>
+                            <dvt:gaugeThreshold id="thr2" color="#ffff00" maximum="56"/>
+                            <dvt:gaugeThreshold id="thr3" color="#e77300" maximum="62"/>
+                            <dvt:gaugeThreshold id="thr4" color="#d62800"/>
+                        </dvt:statusMeterGauge>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:matchAnimationControllerBean-->
+</f:view>

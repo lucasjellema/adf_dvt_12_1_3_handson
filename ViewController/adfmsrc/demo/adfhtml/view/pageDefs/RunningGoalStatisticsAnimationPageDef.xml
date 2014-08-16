@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="RunningGoalStatisticsAnimationPageDef" Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RunningStatsView1" RangeSize="-1" DataControl="WorldCupServiceDataControl"
+              id="RunningStatsView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RunningStatsView1Iterator" id="RunningStatsView1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="demo.adfhtml.model.RunningStatsView" Name="RunningStatsView1">
+        <AttrNames>
+          <Item Value="TotalAvg"/>
+          <Item Value="MatchDate"/>
+          <Item Value="ShortAvg"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

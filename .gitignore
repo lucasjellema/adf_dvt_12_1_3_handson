@@ -8,5 +8,13 @@
 *.war
 *.ear
 
+# ADF build/runtime artifacts
+*.lck
+*.jdb
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+ViewController/public_html/WEB-INF/temp/
+Model/classes/
+ViewController/classes/
+

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Simple Animation" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:panelHeader id="ph1" text="Very simple animation - with controls"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:poll id="p1" interval="#{viewScope.animationControllerBean.interval}" immediate="true"
+                                 pollListener="#{viewScope.animationControllerBean.pollHandler}"
+                                 binding="#{viewScope.animationControllerBean.pollerBinding}"/>
+                        <af:button text="&lt;>" id="b0" shortDesc="Reset"
+                                   actionListener="#{viewScope.animationControllerBean.reset}"/>
+                        <af:button text=">" id="b1" shortDesc="Run/Play"
+                                   actionListener="#{viewScope.animationControllerBean.play}"/>
+                        <af:button text="||" id="b2" shortDesc="Pause/Resume"
+                                   actionListener="#{viewScope.animationControllerBean.pause}"/>
+                        <af:button text="&lt;" id="b3" shortDesc="Reverse"
+                                   actionListener="#{viewScope.animationControllerBean.reverse}"/>
+                        <af:button text=">>" id="b4" shortDesc="Faster"
+                                   actionListener="#{viewScope.animationControllerBean.faster}"/>
+                        <af:button text="&lt;&lt;" id="b5" shortDesc="Slower"
+                                   actionListener="#{viewScope.animationControllerBean.slower}"/>
+                        <af:button text="---->" id="b6" shortDesc="Increase step"
+                                   actionListener="#{viewScope.animationControllerBean.increaseStep}"/>
+                        <af:button text="->" id="b7" shortDesc="Decrease step"
+                                   actionListener="#{viewScope.animationControllerBean.decreaseStep}"/>
+                        <af:inputNumberSlider label="Set step size" id="ins1"
+                                              maximum="#{viewScope.animationControllerBean.maxIncrement}"
+                                              minorIncrement="1" majorIncrement="10"
+                                              minimum="#{viewScope.animationControllerBean.minIncrement}"
+                                              value="#{viewScope.animationControllerBean.increment}" autoSubmit="true"
+                                              partialTriggers="b7 b6"/>
+                        <af:outputText value="#{viewScope.animationControllerBean.value}" id="of1"
+                                       inlineStyle="font-size:xx-large;" partialTriggers="p1"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:animationControllerBean-->
+</f:view>

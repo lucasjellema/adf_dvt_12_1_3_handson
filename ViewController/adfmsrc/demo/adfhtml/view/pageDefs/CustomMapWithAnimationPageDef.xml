@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="CustomMapWithAnimationPageDef"
+                Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RunningMatchPerStadiumCountView1" RangeSize="-1" DataControl="WorldCupServiceDataControl"
+              id="RunningMatchPerStadiumCountView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RunningMatchPerStadiumCountView1Iterator" id="RunningMatchPerStadiumCountView1"
+          ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="demo.adfhtml.model.RunningMatchPerStadiumCountView"
+                      Name="RunningMatchPerStadiumCountView10">
+        <AttrNames>
+          <Item Value="City"/>
+          <Item Value="MatchCount"/>
+          <Item Value="StadiumId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

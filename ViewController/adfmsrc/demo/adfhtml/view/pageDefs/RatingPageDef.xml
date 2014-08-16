@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="RatingPageDef"
+                Package="demo.adfhtml.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GroupsAndAvgRating1" RangeSize="1" DataControl="WorldCupServiceDataControl"
+              id="GroupsAndAvgRating1Iterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="RemainingMatches2" RangeSize="25" DataControl="WorldCupServiceDataControl"
+              id="RemainingMatches2Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <action IterBinding="GroupsAndAvgRating1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="GroupsAndAvgRating1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="GroupsAndAvgRating1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="GroupsAndAvgRating1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="GroupsAndAvgRating1Iterator" id="GroupDesignation">
+      <AttrNames>
+        <Item Value="GroupDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GroupsAndAvgRating1Iterator" id="GroupRating">
+      <AttrNames>
+        <Item Value="GroupRating"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="RemainingMatches2Iterator" id="RemainingMatches2">
+      <nodeDefinition DefName="demo.adfhtml.model.RemainingMatches" Name="RemainingMatches20">
+        <AttrNames>
+          <Item Value="HomeCountry"/>
+          <Item Value="AwayCountry"/>
+          <Item Value="HomeGoals"/>
+          <Item Value="AwayGoals"/>
+          <Item Value="Score"/>
+          <Item Value="MatchId"/>
+          <Item Value="LocalStartTime"/>
+          <Item Value="ScoringProcess"/>
+          <Item Value="MatchRating"/>
+          <Item Value="Group1"/>
+          <Item Value="City"/>
+          <Item Value="Tags"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="GroupsAndAvgRating1Iterator" id="GroupRating12">
+      <AttrNames>
+        <Item Value="GroupRating"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

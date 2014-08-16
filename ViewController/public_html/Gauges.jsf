@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="Gauges.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                                                <af:panelHeader id="ph1" text="The number of matches played at the World Cup Football 2014 - until the selected date"/>
+
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:panelFormLayout id="pfl1">
+
+                            <af:panelFormLayout id="pfl3">
+                                <af:inputDate value="#{bindings.MatchDate.inputValue}" readOnly="true"
+                                              label="#{bindings.MatchDate.hints.label}"
+                                              required="#{bindings.MatchDate.hints.mandatory}"
+                                              columns="#{bindings.MatchDate.hints.displayWidth}"
+                                              shortDesc="#{bindings.MatchDate.hints.tooltip}" id="id3">
+                                    <f:validator binding="#{bindings.MatchDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.MatchDate.format}"/>
+                                </af:inputDate>
+                                <af:inputText value="#{bindings.MatchesPlayedUpUntil.inputValue}"
+                                              label="#{bindings.MatchesPlayedUpUntil.hints.label}"
+                                              required="#{bindings.MatchesPlayedUpUntil.hints.mandatory}"
+                                              readOnly="true"
+                                              columns="#{bindings.MatchesPlayedUpUntil.hints.displayWidth}"
+                                              maximumLength="#{bindings.MatchesPlayedUpUntil.hints.precision}"
+                                              shortDesc="#{bindings.MatchesPlayedUpUntil.hints.tooltip}" id="it3">
+                                    <f:validator binding="#{bindings.MatchesPlayedUpUntil.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.MatchesPlayedUpUntil.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.PercentageMatchesPlayed.inputValue}"
+                                              label="#{bindings.PercentageMatchesPlayed.hints.label}"
+                                              required="#{bindings.PercentageMatchesPlayed.hints.mandatory}"
+                                              readOnly="true"
+                                              columns="#{bindings.PercentageMatchesPlayed.hints.displayWidth}"
+                                              maximumLength="#{bindings.PercentageMatchesPlayed.hints.precision}"
+                                              shortDesc="#{bindings.PercentageMatchesPlayed.hints.tooltip}" id="it4">
+                                    <f:validator binding="#{bindings.PercentageMatchesPlayed.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.PercentageMatchesPlayed.format}"/>
+                                </af:inputText>
+                                <f:facet name="footer">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:button actionListener="#{bindings.First.execute}" text="First"
+                                                   disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b2"/>
+                                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true"
+                                                   id="b3"/>
+                                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b4"/>
+                                        <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                                   disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b5"/>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelFormLayout>
+                        </af:panelFormLayout>
+                        <dvt:dialGauge id="dialGauge1" indicator="needleAntique" minimum="0" maximum="64"
+                        
+                                       background="circleAntique" value="#{bindings.MatchesPlayedUpUntil12.inputValue}">
+                            <dvt:gaugeMetricLabel rendered="true" id="gml1"/>
+                        </dvt:dialGauge>
+                        <dvt:statusMeterGauge orientation="circular" inlineStyle="width:50px;height:50px"
+                                              id="statusMeterGauge1" minimum="0" maximum="64"
+                                              value="#{bindings.MatchesPlayedUpUntil123.inputValue}">
+                            <dvt:gaugeMetricLabel rendered="true" id="gml2"/>
+                            <dvt:gaugeThreshold id="thr1" color="#00ff00" maximum="48"/>
+                            <dvt:gaugeThreshold id="thr2" color="#ffff00" maximum="56"/>
+                            <dvt:gaugeThreshold id="thr3" color="#d62800"/>
+                        </dvt:statusMeterGauge>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>
